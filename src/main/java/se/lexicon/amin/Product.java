@@ -4,14 +4,17 @@ import java.util.ArrayList;
 
 public abstract class Product {
 
-    protected int productNumber;
-    protected String name;
-    protected int price;
-    protected double calories;
-    protected ArrayList<String> allergens;
+    private static int idCounter = 1;
 
-    public Product(int productNumber,String name, int price, double calories) {
-        this.productNumber = productNumber;
+    private int productNumber;
+    private String name;
+    private int price;
+    private double calories;
+    private ArrayList<String> allergens;
+
+
+    public Product(String name, int price, double calories) {
+        this.productNumber = idCounter++;
         this.name = name;
         this.price = price;
         this.calories = calories;
@@ -33,7 +36,7 @@ public abstract class Product {
                 "Name: " + name + "\n" +
                 "Price: " + price + " kr \n" +
                 "Calories: " + calories + " kcal \n" +
-                "Allergens: " + (allergens.isEmpty() ? "No allergens" : allergens) + "\n");
+                "Allergens: " + (allergens.isEmpty() ? "No allergens" : allergens.toString()) + "\n");
     }
 
 
@@ -44,6 +47,10 @@ public abstract class Product {
     }
 
     public int getPrice() { return price; }
+
+    public double getCalories() {
+        return calories;
+    }
 
     protected abstract String consume();
 

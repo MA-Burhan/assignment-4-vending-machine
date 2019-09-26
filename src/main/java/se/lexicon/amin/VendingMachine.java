@@ -5,24 +5,29 @@ import java.util.Arrays;
 
 public class VendingMachine implements IVendingMachine{
 
+    private static int idCounter = 1;
+
     private int id;
     private String location;
     private ArrayList<Product> products;
     private int[] acceptedAmounts = {1, 5, 10, 20, 50, 100, 500, 1000};
     private int depositPool = 0;
 
-    public VendingMachine(int id, String location) {
-        this.id = id;
+
+
+    public VendingMachine(String location) {
+        this.id = idCounter++;
         this.location = location;
         this.products = new ArrayList<Product>();
+
     }
 
     public void initVendingMachine() {
         //Initialize vending machine with some products
-        products.add(new Drinks(21,"Coca-Cola", 15, 250.0, 50));
-        products.add(new Sweets(42,"Gott & Blandat", 22, 450.32, false));
-        products.add(new Food(5,"Kyckling macka", 45, 632.3, false));
-        products.add(new fruits(2,"Äpple", 8, 45, true));
+        products.add(new Drinks("Coca-Cola", 15, 250.0, 50));
+        products.add(new Sweets("Gott & Blandat", 22, 450.32, false));
+        products.add(new Food("Kyckling macka", 45, 632.3, false));
+        products.add(new fruits("Äpple", 8, 45, true));
         //add allergen to one product
         products.get(2).addAllergens("Lactose");
     }
@@ -114,5 +119,19 @@ public class VendingMachine implements IVendingMachine{
         //System.out.println(stringArray);
         return stringArray;
     };
+
+    public ArrayList<Product> getProductsFull() {
+        return products;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
 
 }

@@ -4,14 +4,14 @@ public class Drinks extends Product {
 
     private int volume;
 
-    public Drinks(int productID, String name, int price, double calories, int volume) {
-        super(productID, name, price, calories);
+    public Drinks(String name, int price, double calories, int volume) {
+        super(name, price, calories);
         this.volume = volume;
     }
 
     public String consume() {
         //System.out.println("Drinking");
-        return "Drinking";
+        return "Drinking " + getName();
     }
 
     @Override
@@ -19,4 +19,7 @@ public class Drinks extends Product {
         return super.getDescription() + "Type: Drink \n" + "Volume: " + volume + " cl \n";
     }
 
+    public int getVolume() {
+        return volume;
+    }
 }
